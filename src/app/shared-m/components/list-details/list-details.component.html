@@ -1,0 +1,94 @@
+<div class="2xl:container 2xl:mx-auto md:py-12 lg:px-20 md:px-6 py-9 px-4">
+    <div id="viewerButton" class="hidden w-full flex justify-center">
+      
+    </div>
+    <div id="viewerBox" class="p-4 bg-white dark:bg-gray-900">
+      <div
+        class="mt-3 md:mt-4 lg:mt-0 flex flex-col lg:flex-row items-strech justify-center lg:space-x-8"
+      >
+        <div
+          class="w-full flex justify-between bg-gray-50 px-0 py-2"
+        >
+          <div class="flex items-center">
+            <button
+              (click)="goPrev()"
+              aria-label="slide back"
+              class="focus:outline-none focus:ring-2 focus:ring-gray-800 hover:bg-gray-100"
+            >
+              <svg
+                class="w-10 h-10 lg:w-16 lg:h-16"
+                viewBox="0 0 64 64"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M40 16L24 32L40 48"
+                  stroke="#1F2937"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </button>
+          </div>
+          <div class="h-80 w-full" style="background-image: url({{this.itemDetails.images[ind]}}); background-size: cover; text-align: center;"> 
+        </div>
+          <div class="flex items-center">
+            <button
+              (click)="goNext()"
+              aria-label="slide forward"
+              class="focus:outline-none focus:ring-2 focus:ring-gray-800 hover:bg-gray-100"
+            >
+              <svg
+                class="w-10 h-10 lg:w-16 lg:h-16"
+                viewBox="0 0 64 64"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M24 16L40 32L24 48"
+                  stroke="#1F2937"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </button>
+          </div>
+        </div>
+        <div
+          class="lg:w-1/2 flex flex-col justify-center mt-7 md:mt-8 lg:mt-0 pb-8 lg:pb-0"
+        >
+          <h1
+            class="text-3xl lg:text-4xl font-semibold text-gray-800 dark:text-white"
+          >
+            {{itemDetails.name}}
+          </h1>
+          <p class="text-base leading-normal text-gray-600 dark:text-white mt-2">
+            {{itemDetails.description}}
+          </p>
+          <!-- <p
+            class="text-3xl font-medium text-gray-600 dark:text-white mt-8 md:mt-10"
+          ></p> -->
+          <div
+            class="flex items-center flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-6 lg:space-x-8 mt-8 md:mt-16"
+          >
+            <button
+            (click)="viewDetails(itemDetails)"
+              class="w-full md:w-3/5 border border-gray-800 text-base font-medium leading-none text-white py-6 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 bg-gray-800 text-white dark:bg-white dark:text-gray-900 dark:hover:bg-gray-200"
+            >
+              <a routerLink="/payment">BOOK FOR Rs. <b>{{itemDetails.price}}</b></a>
+            </button>
+            <button
+              (click)="goToLink(itemDetails.location.link)"
+              class="w-full md:w-2/5 border border-gray-800 text-base font-medium leading-none text-gray-800 dark:text-white uppercase py-6 bg-transparent focus:outline-none focus:ring-2 focus:ring-offset-2 dark:bg-transparent dark:border-white dark:text-white focus:ring-gray-800 hover:bg-gray-800 hover:text-white dark:hover:bg-gray-800"
+            ><a href="{{itemDetails.location.link}}" target="_blank"> View on Map</a>
+            </button>
+          </div>
+          <div class="mt-6">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
