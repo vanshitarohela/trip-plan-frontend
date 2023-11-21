@@ -1,14 +1,15 @@
 import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './Components/home/home.component';
-import { FlightsComponent } from './Components/flights/flights.component';
 import { MainComponent } from './Components/main/main.component';
 import { SignupComponent } from './Components/signup/signup.component';
 import { SigninComponent } from './Components/signin/signin.component';
 import { ListComponent } from './shared-m/components/list/list.component';
-import { compileClassMetadata } from '@angular/compiler';
 import { ListDetailsComponent } from './shared-m/components/list-details/list-details.component';
 import { PaymentComponent } from './Components/payment/payment.component';
+import { WeatherComponent } from './Components/weather/weather.component';
+import { ProfileComponent } from './Components/profile/profile.component';
+import { PackagesComponent } from './Components/packages/packages.component';
 
 const routes: Routes = [
   {
@@ -33,12 +34,20 @@ const routes: Routes = [
         component: ListDetailsComponent,
       },
       {
-        path: 'flights',
-        component: FlightsComponent
+        path: 'packages',
+        component: PackagesComponent
+      },
+      {
+        path: 'weather',
+        component: WeatherComponent
       },
       {
         path: "payment",
         component: PaymentComponent
+      },
+      {
+        path: "profile",
+        component: ProfileComponent
       }
     ],
   },

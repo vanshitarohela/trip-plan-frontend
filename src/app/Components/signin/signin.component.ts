@@ -1,5 +1,7 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 import { UserProcessesService } from 'src/app/shared-m/services/user/user-processes.service';
 
 @Component({
@@ -10,7 +12,7 @@ import { UserProcessesService } from 'src/app/shared-m/services/user/user-proces
 export class SigninComponent implements OnInit {
   loginDetails!: FormGroup;
 
-  constructor(private service: UserProcessesService) {}
+  constructor(private userService: UserProcessesService, private router: Router) {}
 
   ngOnInit(): void {
     this.loginDetails = new FormGroup({
@@ -21,8 +23,13 @@ export class SigninComponent implements OnInit {
 
   onFormSubmit() {
     console.log(this.loginDetails.value);
-    // this.userService.insertUser(this.userDetails.value).subscribe((res) =>  {
-    //   console.log(res);
-    // });
+    this.userService.verifyAuthentication(this.loginDetails.value).subscribe((res) =>  {
+      console.log(res);
+      this.userService.updateUserInLocalStorage(res);
+      this.router.navigate(['home'])
+    },
+    (error: HttpErrorResponse) => {
+      console.log(error);      
+    });
   }
 }

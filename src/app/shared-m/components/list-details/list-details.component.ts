@@ -17,23 +17,8 @@ export class ListDetailsComponent {
     private route: ActivatedRoute,
     private service: ProcessesService
   ) {
-    // const restaurant = this.route.snapshot.paramMap.getAll('location');
-    // console.log(restaurant);
-    // console.log(history.state);
     this.itemDetails = history.state.restaurant;
-
-    // this.itemDetails =
-    //   this.router.getCurrentNavigation()?.extras.state?.['restaurant'];
-    // console.log(this.router.getCurrentNavigation());
-
-    // console.log(this.router.getCurrentNavigation()?.extras.state?['restaurant']);
-    // console.log(this.itemDetails);
-
-    // const restaurantId = this.router.getCurrentNavigation()?.extras?.state?.['restaurant'].id;
   }
-
-  // ngOnChanges() {}
-
   ind = 0;
 
   goPrev() {
@@ -53,8 +38,8 @@ export class ListDetailsComponent {
       window.open(link, '_blank');
   }
 
-  viewDetails(restaurant: Restaurant) {
-    this.router.navigate([`../payment`], {state: {restaurant: restaurant}})
-    // TODO
+  payDetails(restaurant: Restaurant) {
+    localStorage.setItem("restaurantPayment", JSON.stringify(restaurant));
+    this.router.navigate([`../payment`])
   }
 }

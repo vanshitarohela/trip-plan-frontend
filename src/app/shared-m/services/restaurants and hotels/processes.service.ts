@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Restaurant } from '../../model/interfaces';
+import { Restaurant, Root } from '../../model/interfaces';
 
 
 @Injectable({
@@ -25,5 +25,9 @@ export class ProcessesService {
 
   getHotelById(id: string): Observable<Restaurant> {
     return this.http.get<Restaurant>("http://localhost:8080/api/v1/hotels/" + id);
+  }
+
+  getWeatherByCity(city: string): Observable<Root> {
+    return this.http.get<Root>("https://api.openweathermap.org/data/2.5/weather?q="+ city + "&appid=5be1d1ccbcddb30cd1b69f953f7e8042&units=metric")
   }
 }

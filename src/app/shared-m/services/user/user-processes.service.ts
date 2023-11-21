@@ -20,4 +20,20 @@ export class UserProcessesService {
   insertUser(user: User): Observable<User> {
     return this.http.post<User>("http://localhost:8080/api/v1/users/insert", user);
   }
+
+  verifyAuthentication(user: User): Observable<User> {
+    return this.http.post<User>("http://localhost:8080/api/v1/users/signin", user);   
+  }
+
+  updateUserInLocalStorage(user: User) {
+    localStorage.setItem("user", JSON.stringify(user));
+  }
+
+  getSignedInUser() {
+    var ans = localStorage.getItem("user");
+    if(ans) {
+      return JSON.parse(ans);
+    }
+    return null;
+  }
 }

@@ -32,13 +32,13 @@
     >
       <a
         class="text-sm font-medium text-gray-200 transition-colors duration-300 transform hover:text-indigo-400"
-        [routerLink]="['list/', 'restaurants']"
-        >Restaurants</a
+        routerLink="weather"
+        >Weather</a
       >
       <a
         class="text-sm font-medium text-gray-200 transition-colors duration-300 transform hover:text-indigo-400"
-        routerLink="flights"
-        >Flights</a
+        [routerLink]="['list/', 'restaurants']"
+        >Restaurants</a
       >
       <a
         class="text-sm font-medium text-gray-200 transition-colors duration-300 transform hover:text-indigo-400"
@@ -46,9 +46,21 @@
         >Hotels</a
       >
       <a
+        class="text-sm font-medium text-gray-200 transition-colors duration-300 transform hover:text-indigo-400"
+        routerLink="packages"
+        >Packages</a
+      >
+      <a
+        *ngIf="!user"
         class="px-4 py-1 text-sm font-medium text-center text-gray-200 transition-colors duration-300 transform border rounded hover:bg-indigo-400"
         routerLink="signup"
         >Sign Up / Sign In</a
+      >
+      <a
+        *ngIf="user"
+        class="px-4 py-1 text-sm font-medium text-center text-gray-200 transition-colors duration-300 transform border rounded hover:bg-indigo-400"
+        routerLink="profile"
+        >{{user.name}}</a
       >
     </div>
   </nav>

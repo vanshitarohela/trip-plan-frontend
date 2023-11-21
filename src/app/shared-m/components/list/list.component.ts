@@ -62,6 +62,5 @@ export class ListComponent implements OnInit {
   
   viewDetails(restaurant: Restaurant) {
     this.route.navigate([`../details`], {state: {restaurant: restaurant}})
-    // TODO
   }
 }

@@ -38,7 +38,7 @@
                   class="py-2 px-3 rounded-lg border-2 border-purple-300 mt-1 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
                   #filter
                 >
-                  <option disabled selected hidden value="">Select city</option>
+                  <option selected value=null>Select city</option>
                   <option value="mathura">Mathura</option>
                   <option value="agra">Agra</option>
                   <option value="delhi">Delhi</option>
@@ -63,11 +63,12 @@
           {{ type }}
         </p>
         <div
+        (click)="viewDetails(details)"
           *ngFor="let details of filteredLocations"
           class="md:flex items-strech py-8 md:py-10 lg:py-8 border-t border-gray-50"
         >
           <div
-            (click)="viewDetails(details)"
+            
             class="md:w-4/12 2xl:w-1/4 w-full"
           >
             <!-- [routerLink]="['../details-details', details]" -->
@@ -103,6 +104,10 @@
               <p
                 class="text-base font-black leading-none text-gray-800 dark:text-white"
               >
+              <span class="text-sm font-medium" >Rating - {{details.review.rating}} </span>
+                
+                <br><br>
+                
                 Rs. {{ details.price }}
               </p>
             </div>

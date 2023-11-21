@@ -20,7 +20,7 @@
       ></div>
     </div>
     <div class="flex md:w-1/2 justify-center py-10 items-center bg-white">
-      <form class="bg-white" [formGroup]="loginDetails">
+      <form class="bg-white" [formGroup]="loginDetails" (ngSubmit)="onFormSubmit()">
         <h1 class="text-gray-800 font-bold text-2xl mb-1">Welcome back!</h1>
         <div class="flex items-center border-2 py-2 px-3 rounded-2xl mb-4">
           <svg
